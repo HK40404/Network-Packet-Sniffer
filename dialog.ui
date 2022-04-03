@@ -226,7 +226,7 @@ QPushButton:pressed {
     <rect>
      <x>250</x>
      <y>265</y>
-     <width>130</width>
+     <width>151</width>
      <height>41</height>
     </rect>
    </property>
@@ -272,6 +272,16 @@ QPushButton:pressed {
    <item>
     <property name="text">
      <string>HTTP</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>HTTPS</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SSH</string>
     </property>
    </item>
   </widget>

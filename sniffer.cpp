@@ -510,6 +510,12 @@ QString Filter::get_filter_exp() {
         else if (protocol == "HTTP") {
             exp += "tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)";
         }
+        else if (protocol == "HTTPS") {
+            exp += "tcp port 443 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)";
+        }
+        else if (protocol == "SSH") {
+            exp += "tcp port 22 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)";
+        }
     }
     return exp;
 }

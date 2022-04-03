@@ -38,6 +38,10 @@ void Dialog::set_rule_text() {
             ui->proto_selection->setCurrentIndex(5);
         else if (filter.protocol == "HTTP")
             ui->proto_selection->setCurrentIndex(6);
+        else if (filter.protocol == "HTTPS")
+            ui->proto_selection->setCurrentIndex(7);
+        else if (filter.protocol == "SSH")
+            ui->proto_selection->setCurrentIndex(8);
     }
 }
 
