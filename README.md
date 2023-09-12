@@ -69,7 +69,7 @@ github链接：https://github.com/HK40404/Network-Packet-Sniffer
 
 项目使用libpcap库来侦听网络流量（抓包），其抓包原理如下图。
 
-![elements-involoved-in-the-capture-process](.\图片\elements-involoved-in-the-capture-process.png)
+![elements-involoved-in-the-capture-process](./图片/elements-involoved-in-the-capture-process.png)
 
 libpcap在数据链路层加了一个旁路，当网卡接收一个数据包时，libpcap利用已经创建的socket从链路层的驱动程序中获得该数据包的一份拷贝，并且将这份拷贝发送到BPF过滤器，过滤器根据用户编程设定的过滤规则决定是否接受该数据包，并传给相关的应用程序。
 
@@ -155,7 +155,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
 
 以太网是数据链路层的协议，以太网帧的格式如下：
 
-![以太网](.\图片\以太网.png)
+![以太网](./图片/以太网.png)
 
 因为libpcap捕获到的是数据链路层的帧，因此我们要从捕获到的以太网帧开始进行解析。
 
@@ -167,7 +167,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
 
 ARP协议是网络层的协议，ARP报文的格式如下：
 
-![ARP](.\图片\ARP.png)
+![ARP](./图片/ARP.png)
 
 ARP报文总长度为28字节。各字段含义如下：
 
@@ -185,7 +185,7 @@ ARP报文总长度为28字节。各字段含义如下：
 
 IP协议是网络层的协议，IP报文格式如下：
 
-![ARP](.\图片\IP.png)
+![ARP](./图片/IP.png)
 
 IP报文的报头长度一般为20字节（没有选项字段），各个字段的含义如下：
 
@@ -207,7 +207,7 @@ IP报文的报头长度一般为20字节（没有选项字段），各个字段�
 
 ICMP协议是网络层协议，ICMP报文格式如下：
 
-![ARP](.\图片\ICMP.png)
+![ARP](./图片/ICMP.png)
 
 ICMP报文一般为8个字节，各字段含义如下：
 
@@ -219,7 +219,7 @@ ICMP报文一般为8个字节，各字段含义如下：
 
 TCP是传输层协议，TCP报文格式如下：
 
-![ARP](.\图片\TCP.png)
+![ARP](./图片/TCP.png)
 
 TCP报文的报头长度一般为20字节（没有选项字段），各字段含义：
 
@@ -243,7 +243,7 @@ TCP报文的报头长度一般为20字节（没有选项字段），各字段含
 
 UDP是传输层协议，UDP报文的格式如下：
 
-![ARP](.\图片\UDP.png)
+![ARP](./图片/UDP.png)
 
 UDP报文的首部长度为8字节，各字段含义如下：
 
@@ -515,7 +515,7 @@ Filter类保存了过滤规则，并且负责<font color=red>**将过滤规则�
 
 #### A. 主界面MainWindow
 
-![mainwindow](.\图片\mainwindow.png)
+![mainwindow](./图片/mainwindow.png)
 
 主界面分为上、中、下三部分。上部分是一些按钮，中间部分显示数据包的概要信息，下部分展示某个数据包的详细信息（需要点击列表选择数据包）。
 
@@ -644,7 +644,7 @@ Filter类保存了过滤规则，并且负责<font color=red>**将过滤规则�
 
 #### B. 规则界面Dialog
 
-<img src=".\图片\dialog.png" alt="dialog" style="zoom: 50%;" />
+<img src="./图片/dialog.png" alt="dialog" style="zoom: 50%;" />
 
 规则界面共有三个，对应嗅探器可以设置的三条规则。
 
@@ -722,7 +722,7 @@ Filter类保存了过滤规则，并且负责<font color=red>**将过滤规则�
 
 #### C. 进程追踪界面ProcessDialog
 
-![processdialog](.\图片\processdialog.png)
+![processdialog](./图片/processdialog.png)
 
 #### ProcessDialog类成员变量
 
@@ -805,7 +805,7 @@ Filter类保存了过滤规则，并且负责<font color=red>**将过滤规则�
 
 在做项目的过程中，我发现当三条规则的每个条目都填满时，解析出的表达式会很长。此时调用`pcap_compile()`函数编译表达式时，会显示以下的警告：没有办法分配那么多的内存。
 
-![表达式太长](.\图片\表达式太长.png)
+![表达式太长](./图片/表达式太长.png)
 
 经过重新查看`libpcap`的官方文档，我找到了解决的办法。只需要将`pcap_compile()`的第4个参数`optimize`设置为`1`，`pcap_compile()`函数就会对过长的过滤表达式进行一定的优化，这样就能减少过滤器需要内核分配的内存，程序就能成功执行。
 
@@ -883,7 +883,7 @@ tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)
 
 视频比图片包含了更多信息，具体功能放在演示视频中展示。这里简单介绍一下嗅探器的用法。
 
-![mainwindow](.\图片\mainwindow.png)
+![mainwindow](./图片/mainwindow.png)
 
 - 【抓包数】是指一次的抓包数量，点击【抓包】后，会抓取数量等同于抓包数那么多数据包，才停止抓取。
 
@@ -892,11 +892,11 @@ tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)
 
 - 【rule1】、【rule2】、【rule3】按钮用于设置过滤规则，抓包时，满足任意一条**非空规则**的数据包都会被捕获。
 
-<img src=".\图片\dialog.png" alt="dialog" style="zoom:50%;" />
+<img src="./图片/dialog.png" alt="dialog" style="zoom:50%;" />
 
 点击【rule1】、【rule2】或【rule3】按钮后，会弹出规则窗口，这里可以设置该条规则的过滤表达式。满足一条规则指的是该数据包的源ip&端口、目的ip&端口、协议都满足规则窗口设置的值。假如某条值设置为空，比如源ip设置为空，不对此项做过滤。按【保存】按钮可以对规则进行保存，下次打开这个窗口时规则还会在，抓包时该条规则也会起作用。按【清除】按钮可以清除规则，抓包时规则也不会再起作用。
 
-![processdialog](.\图片\processdialog.png)
+![processdialog](./图片/processdialog.png)
 
 在主界面中点击【追踪进程流】按钮后，弹出进程追踪界面，输入进程名或者pid，点击【追踪】按钮，即可看到相关进程的TCP流。点击列表中的TCP流，即可将追踪该TCP流的规则应用到规则一和规则二（发送和接收两个TCP流，所以需要两条规则），再回到主界面进行抓包即可追踪此TCP流。
 
